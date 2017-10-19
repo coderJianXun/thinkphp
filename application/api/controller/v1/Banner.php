@@ -9,8 +9,7 @@
 namespace app\api\controller\v1;
 
 
-use think\Validate;
-use app\api\validate\TestValidate;
+use app\api\validate\IDMustBePostiveInt;
 
 class Banner
 {
@@ -18,8 +17,8 @@ class Banner
     {
         $data = ['id' => $id];
         // $validate = new Validate(['id' => 'max:2']);
-        $validate = new TestValidate();
-        $res = $validate->batch()->check($data);
+        $validate = new IDMustBePostiveInt();
+        $validate->batch()->check($data);
         var_dump($validate->getError());
     }
 }
