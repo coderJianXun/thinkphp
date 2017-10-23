@@ -10,17 +10,14 @@ namespace app\api\controller\v1;
 
 
 use app\api\validate\IDMustBePostiveInt;
+use app\api\model\Banner as BannerModel;
 
 class Banner
 {
     public function getBanner($id)
     {
         (new IDMustBePostiveInt())->goCheck();
-        echo '111';
-//        $data = ['id' => $id];
-//        // $validate = new Validate(['id' => 'max:2']);
-//        $validate = new IDMustBePostiveInt();
-//        $validate->batch()->check($data);
-//        var_dump($validate->getError());
+        $banner = BannerModel::getBannerByID($id);
+        return $banner;
     }
 }
